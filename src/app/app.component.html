@@ -9,9 +9,15 @@
 
 <input [disabled]="disabledInput" type="text" placeholder="Enter your text">
 <input [disabled]="isDisabled()" type="text" placeholder="Enter your text">
-<input [disabled]="isDisabled()" type="text" [value]="currentUser.username" placeholder="Enter your text">
-<input [class.blue-bg]="isBlueBg" type="text" placeholder="Enter your text">
+<input [disabled]="!isDisabled()" type="text" [value]="currentUser.username" placeholder="Enter your text">
+<input [disabled]="!isDisabled()" [class.blue-bg]="isBlueBg" type="text" placeholder="Enter your text">
 <input [style.background-color] = "bgColor" type="text" placeholder="Enter your text">
+
+<button (click)="toggle()">Click to toggle email</button>
+
+<button (mouseleave)="toggle()">Toggle</button>
+
+<button (mouseover)="toggle()">Toggle2</button>
 
 <p>Hello, {{currentUser.username + ' - ' + currentUser.email}}</p>
 

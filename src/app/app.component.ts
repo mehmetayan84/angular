@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  styles: ['.blue-bg{background-color:blue;}']
+  styles: ['.blue-bg{background-color:cyan;}']
 })
 export class AppComponent  {
   
@@ -11,7 +11,11 @@ export class AppComponent  {
   
   private hideEmail:boolean = true;
 
-  private disabledInput:boolean = false;
+  private disabledInput:boolean = true;
+
+  private toggle(){
+    this.hideEmail = !this.hideEmail;
+  }
 
   private isDisabled():boolean{
     return this.disabledInput;
