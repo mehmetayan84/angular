@@ -19,8 +19,38 @@
 
 <button (mouseover)="toggle()">Toggle2</button>
 
-<p>Hello, {{currentUser.username + ' - ' + currentUser.email}}</p>
+<p>Your email is <em *ngIf="!hideEmail">{{currentUser.email}}</em></p>
 
-<p>Hello, {{getUsername()}}!</p>
 
-<input value="{{getUsername()}}" type="text">
+
+<div>
+    <input type="text" #a>
+    <p>The value of the input is: {{a.value}}</p>
+</div>
+
+<div>
+    <input type="text" #b (keydown)="0">
+    <p>The value of the input is: {{b.value}}</p>
+</div>
+
+<div>
+    <h3>Change E-mail:</h3>
+    <input type="text" #mail1>
+    <button (click)="changeMail(mail1.value)">Click to Change Mail</button>
+</div>
+
+<div>
+    <h3>Change E-mail:</h3>
+    <input type="text" #mail2 (keyup)="keyPress($event)">
+</div>
+
+<div>
+    <h3>Change E-mail:</h3>
+    <input type="text" #mail3 (keyup.enter)="changeMail(mail3.value)">
+</div>
+
+<ul>
+    <li *ngFor="let user of users, let i=index">
+        ({{i+1}}) {{user.username}} - <em>{{user.email}}</em>
+    </li>
+</ul>
