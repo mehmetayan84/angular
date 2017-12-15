@@ -1,56 +1,33 @@
-<h1>My First Angular 2 App</h1>
+<h1>Personal Finance</h1>
 
 <div>
-    <p>Hello, {{currentUser.username}}</p>
+    <h2>Your Accounts</h2>
+    <p *ngIf="!_accounts || _accounts.length == 0">You don't have any accounts yet. Please check your account information</p>
 
-    <p [hidden] = "hideEmail">Your email is: <em>{{currentUser.email}}</em></p>
-
-</div>
-
-<input [disabled]="disabledInput" type="text" placeholder="Enter your text">
-<input [disabled]="isDisabled()" type="text" placeholder="Enter your text">
-<input [disabled]="!isDisabled()" type="text" [value]="currentUser.username" placeholder="Enter your text">
-<input [disabled]="!isDisabled()" [class.blue-bg]="isBlueBg" type="text" placeholder="Enter your text">
-<input [style.background-color] = "bgColor" type="text" placeholder="Enter your text">
-
-<button (click)="toggle()">Click to toggle email</button>
-
-<button (mouseleave)="toggle()">Toggle</button>
-
-<button (mouseover)="toggle()">Toggle2</button>
-
-<p>Your email is <em *ngIf="!hideEmail">{{currentUser.email}}</em></p>
-
-
-
-<div>
-    <input type="text" #a>
-    <p>The value of the input is: {{a.value}}</p>
+    <div *ngFor="let account of _accounts, let i = index">
+        <h3>{{account.title}} {{account.id}}</h3>
+        <p>{{account.description}}</p>
+        <p>Balance: <strong>{{account.balance}}</strong></p>
+        <button (click) = "removeAccount(i)">Delete Account</button>
+        <br>
+        <br>
+    </div>
 </div>
 
 <div>
-    <input type="text" #b (keydown)="0">
-    <p>The value of the input is: {{b.value}}</p>
+    <div>
+        <label for="title">Title:</label>
+        <input id="title" type="text" name="title" value="" #title>
+    </div>
+    <div>
+        <label for="description">Description :</label>
+        <input id="description" type="text" name="description" value="" #description>
+    </div>
+    <div>
+        <label for="balance">Balance</label>
+        <input id="balance" name="balance" type="number" value="0" #balance>
+    </div>
+    <div>
+        <button (click)="createAccount(title, description, balance)">Crate Account</button>
+    </div>
 </div>
-
-<div>
-    <h3>Change E-mail:</h3>
-    <input type="text" #mail1>
-    <button (click)="changeMail(mail1.value)">Click to Change Mail</button>
-</div>
-
-<div>
-    <h3>Change E-mail:</h3>
-    <input type="text" #mail2 (keyup)="keyPress($event)">
-</div>
-
-<div>
-    <h3>Change E-mail:</h3>
-    <input type="text" #mail3 (keyup.enter)="changeMail(mail3.value)">
-</div>
-
-<ul>
-    <li *ngFor="let user of users, let i=index">
-        ({{i+1}}) {{user.username}} - <em>{{user.email}}</em>
-    </li>
-</ul>
