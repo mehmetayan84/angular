@@ -11,11 +11,29 @@ export class AppComponent  {
     new Account(2, "Bank Asd", "My secret account", 1024.10)
   ]
   
-  private _nextId = this._accounts.length + 1;
+  private _maxId = this.findMaxId();
+
+  private findMaxId()
+  {
+    let max= 0;
+    if(this._accounts && this._accounts.length > 0)
+    {
+      max = this._accounts[0].id;
+    }
+
+    for(let account of this._accounts){
+      if(account.id > max)
+      {
+        max = account.id;
+      }
+    }
+
+    return max;
+  }
 
   private createAccount(titleEl: any, descEl: any, balEl:any){
-    this._accounts.push(new Account(this._nextId, titleEl.value, descEl.value, balEl.value));
-    this._nextId++;
+    this._accounts.push(new Account(this._maxId+1, titleEl.value, descEl.value, balEl.value));
+    this._maxId = this.findMaxId();
 
     titleEl.value = "";
     descEl.value= "";
@@ -24,6 +42,7 @@ export class AppComponent  {
 
   private removeAccount(index:number){
     this._accounts.splice(index, 1);
+    this._maxId = this.findMaxId();
   }
 }
 
