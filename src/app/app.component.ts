@@ -4,6 +4,7 @@ import {Account} from './account.model';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
+  styleUrls: ['app/app.component.css']
 })
 export class AppComponent  {
   private _accounts:Array<Account> = [

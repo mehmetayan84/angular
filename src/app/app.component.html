@@ -2,13 +2,13 @@
 
 <div>
     <h2>Your Accounts</h2>
-    <p *ngIf="!_accounts || _accounts.length == 0">You don't have any accounts yet. Please check your account information</p>
+    <div class="info" *ngIf="!_accounts || _accounts.length == 0">You don't have any accounts yet. Please check your account information</div>
 
-    <div *ngFor="let account of _accounts, let i = index">
-        <h3>{{account.title}} {{account.id}}</h3>
+    <div class="acc" *ngFor="let account of _accounts, let i = index">
+        <h2 class="title">{{account.title}} {{account.id}}</h2>
         <p>{{account.description}}</p>
         <p>Balance: <strong>{{account.balance}}</strong></p>
-        <button (click) = "removeAccount(i)">Delete Account</button>
+        <button style="color:black" (click) = "removeAccount(i)">Delete Account</button>
         <br>
         <br>
     </div>
