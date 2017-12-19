@@ -7,6 +7,9 @@ import {Account} from './account.model';
   styleUrls: ['app/app.component.css']
 })
 export class AppComponent  {
+
+  private _selected:Array<boolean> = [false, false];
+
   private _accounts:Array<Account> = [
     {id:1, title:"Bank Xyz", description: "This is my main bank account", balance:501.2},
     new Account(2, "Bank Asd", "My secret account", 1024.10)
@@ -34,6 +37,7 @@ export class AppComponent  {
 
   private createAccount(titleEl: any, descEl: any, balEl:any){
     this._accounts.push(new Account(this._maxId+1, titleEl.value, descEl.value, balEl.value));
+    this._selected.push(false);
     this._maxId = this.findMaxId();
 
     titleEl.value = "";
@@ -43,6 +47,7 @@ export class AppComponent  {
 
   private removeAccount(index:number){
     this._accounts.splice(index, 1);
+    this._selected.splice(index, 1);
     this._maxId = this.findMaxId();
   }
 }
