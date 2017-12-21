@@ -1,0 +1,13 @@
+.acc{
+    background-color:#F7F7F9;
+    padding: 12px 24 px;
+    border-bottom: 1px solid #ddd;
+}
+
+.acc:first-child{
+    border-top: 1px solid #ddd;
+}
+
+.acc:hover{
+    background-color: #8CCE40;
+}

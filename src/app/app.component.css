@@ -1,21 +1,5 @@
-.info{
-    background-color: #A1DBF0;
-    padding: 10px 24 px;
-    margin: 8px;
-    color:black;
-}
-
-.acc{
-    background-color:#BBBBBB;
-    padding: 10px 24 px;
-    margin:8px;
-    color:black;
-}
-
-.acc>*{
-    margin:4px;
-}
-
-.selected{
-    background-color: #45EE50;
+form{
+    margin: 24px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }

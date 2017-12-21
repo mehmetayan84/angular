@@ -1,33 +1,28 @@
-<h1>Personal Finance</h1>
+<div class="container">
+   <h1>Personal Finance</h1>
 
-<div>
-    <h2>Your Accounts</h2>
-    <div class="info" *ngIf="!_accounts || _accounts.length == 0">You don't have any accounts yet. Please check your account information</div>
-
-    <div class="acc" *ngFor="let account of _accounts, let i = index">
-        <h2 class="title">{{account.title}} {{account.id}}</h2>
-        <p>{{account.description}}</p>
-        <p>Balance: <strong>{{account.balance}}</strong></p>
-        <button style="color:black" (click) = "removeAccount(i)">Delete Account</button>
-        <br>
-        <br>
-    </div>
-</div>
-
-<div>
     <div>
-        <label for="title">Title:</label>
-        <input id="title" type="text" name="title" value="" #title>
+        <h2>Your Accounts</h2>
     </div>
-    <div>
-        <label for="description">Description :</label>
-        <input id="description" type="text" name="description" value="" #description>
+    <accounts-list></accounts-list>
+    <div class="row">
+        <form class="col-md-6">
+            <h3>Add A New Account</h3>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input id="title" class="form-control"  type="text" name="title" value="" #title>
+            </div>
+            <div class="form-group">
+                <label for="description">Description :</label>
+                <input id="description" class="form-control" type="text" name="description" value="" #description>
+            </div>
+            <div class="form-group">
+                <label for="balance">Balance</label>
+                <input id="balance" name="balance" class="form-control" type="number" value="0" #balance>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" (click)="createAccount(title, description, balance)">Crate Account</button>
+            </div>
+        </form>
     </div>
-    <div>
-        <label for="balance">Balance</label>
-        <input id="balance" name="balance" type="number" value="0" #balance>
-    </div>
-    <div>
-        <button (click)="createAccount(title, description, balance)">Crate Account</button>
-    </div>
-</div>
+</div> 
