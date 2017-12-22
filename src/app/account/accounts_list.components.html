@@ -11,9 +11,8 @@
         <p>Balance: <strong class="lead">{{account.balance}}</strong></p>
         <div class="row">
             <div class="col-md-3">    
-                <button class="btn btn-danger" (click) = "removeAccount(i)">Delete Account</button>
-                <strong>|</strong>
-                <button class="btn btn-primary" (click)="select(i)">Select</button>
+                <button class="btn btn-danger" (click) = "_remove(i)">Delete Account</button>
+                <button class="btn btn-default" (click) = "_select(i)">{{_selected[i] ? "Deselect" : "Select"}}</button>
                 <br>
                 <br>
             </div>

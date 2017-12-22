@@ -1,0 +1,23 @@
+<div class="row">
+    <form class="col-md-6">
+        <h3>Add A New Account</h3>
+        <div *ngIf="_errorMessage">
+            <div class="alert alert-danger"><strong>Creating error </strong>{{_errorMessage}}</div>
+        </div>
+        <div class="form-group">
+            <label for="title">Title:</label>
+            <input id="title" class="form-control"  type="text" name="title" value="" #title>
+        </div>
+        <div class="form-group">
+            <label for="description">Description :</label>
+            <input id="description" class="form-control" type="text" name="description" value="" #description>
+        </div>
+        <div class="form-group">
+            <label for="balance">Balance</label>
+            <input id="balance" name="balance" class="form-control" type="number" value="0" #balance>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" (click)="_create(title, description, balance)">Crate Account</button>
+        </div>
+    </form>
+</div>

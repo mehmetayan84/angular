@@ -1,5 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, ViewChild,  QueryList, Injector} from '@angular/core';
 import {Account} from './account/account.model';
+import {AccountsList} from './account/accounts_list.components';
+import {AccountForm} from './account/account_form.component';
+import {AccountService} from './account/account.services';
 
 @Component({
   selector: 'my-app',
@@ -10,22 +13,34 @@ import {Account} from './account/account.model';
 
 export class AppComponent  {
 
-  private _accounts:Array<Account> = [
-    {id:1, title:"Bank Xyz", description: "This is my main bank account", balance:501.2},
-    {id:2, title:"Bank Asd", description:"My secret account", balance:1024.10}
-]
-  private _nextId = 3;
+  private _selected:Array<boolean> = [false, false];
 
-  private createAccount(_nextId:number, titleEl: any, descEl: any, balEl:any){
-     alert("This method hasn't beern implemented yet");
-  //   // this._accounts.push(new Account(this._nextId, titleEl.value, descEl.value, balEl.value));
-  //   // this._selected.push(false);
-  //   // this._nextId = this._nextId++;
+  private _accounts:Array<Account>;
+  private _accountService:AccountService;
 
-     titleEl.value = "";
-     descEl.value= "";
-     balEl.value = 0;
+  constructor(accountService:AccountService){
+
+    this._accountService = accountService;
+
+    this._accounts = this._accountService.getAll();
+
+
   }
+
+  private createError:string = "";
+
+  private createAccount(newAccount:Account){
+    this._accountService.create(newAccount);
+    this.form.resetForm();
+  }
+
+
+  private removeAccount(index:number){
+    this._accountService.remove(index);
+  }
+
+  @ViewChild(AccountForm) form:AccountForm;
+
 
 }
 
