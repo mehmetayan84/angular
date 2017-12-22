@@ -5,7 +5,7 @@
 </div>
 
 <div class="row" *ngFor="let account of _accounts, let i = index">
-    <div class="acc col-md-12" [ngClass]="{selected:_selected[i]}">
+    <div class="acc col-md-12">
         <h2 class="title">{{account.title}} {{account.id}}</h2>
         <p>{{account.description}}</p>
         <p>Balance: <strong class="lead">{{account.balance}}</strong></p>
@@ -13,7 +13,7 @@
             <div class="col-md-3">    
                 <button class="btn btn-danger" (click) = "removeAccount(i)">Delete Account</button>
                 <strong>|</strong>
-                <button class="btn btn-primary" (click)="select(i)">{{_selected[i]?'Deselect':'Select'}}</button>
+                <button class="btn btn-primary" (click)="select(i)">Select</button>
                 <br>
                 <br>
             </div>
