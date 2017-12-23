@@ -1,4 +1,4 @@
-import { Component, ViewChildren, ViewChild,  QueryList, Injector} from '@angular/core';
+import { Component, ViewChild,  Injector} from '@angular/core';
 import {Account} from './account/account.model';
 import {AccountsList} from './account/accounts_list.components';
 import {AccountForm} from './account/account_form.component';
@@ -7,13 +7,12 @@ import {AccountService} from './account/account.services';
 @Component({
   selector: 'my-app',
   templateUrl: 'app/app.component.html',
-  styleUrls: ['app/app.component.css']
-})
+  styleUrls: ['app/app.component.css'],
+  providers: [AccountService]
+  })
 
 
 export class AppComponent  {
-
-  private _selected:Array<boolean> = [false, false];
 
   private _accounts:Array<Account>;
   private _accountService:AccountService;

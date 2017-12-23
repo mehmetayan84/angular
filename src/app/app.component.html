@@ -4,6 +4,6 @@
     <div>
         <h2>Your Accounts</h2>
     </div>
-    <accounts-list [accounts] = '_accounts' [selected] = '_selected' (delete)="removeAccount($event)" (select)="selectAccount($event)"></accounts-list>
-    <account-form (create)="createAccount($event)" [createMessage] = '_errorMessage'></account-form>
+    <accounts-list [accounts] = '_accounts' (delete)="removeAccount($event)"></accounts-list>
+    <account-form (create)="createAccount($event)" [createMessage] = 'createError'></account-form>
 </div> 

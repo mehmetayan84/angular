@@ -7,8 +7,8 @@ import { AccountService } from './account/account.services';
 
 @NgModule({
   imports:      [ BrowserModule ],
-  declarations: [ AppComponent, AccountsList, AccountForm],
+  declarations: [ AccountService, AppComponent, AccountsList, AccountForm],
   bootstrap:    [ AppComponent ],
-  providers: [AccountService]
+  providers:    [AccountService]
 })
 export class AppModule { }
